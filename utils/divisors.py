@@ -89,3 +89,21 @@ def mult_ord(a, n):
         return m_ord
 
     raise ValueError(f'The given integer arguments are not relative primes: {a} and {n}')
+
+
+def prime_decomposition(N, primes=None):
+    if primes is None:
+        _, primes = get_primes(N + 1)
+
+    decomp = []
+
+    for p in primes:
+        val = 0
+
+        while N % p == 0:
+            N //= p
+            val += 1
+
+        decomp.append(val)
+
+    return decomp
