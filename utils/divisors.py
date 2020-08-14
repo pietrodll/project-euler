@@ -11,6 +11,34 @@ def is_prime(n):
     return True
 
 
+def get_primes(N, verbose=0):
+    primes = [False] * 2 + [True] * (N - 2)
+
+    i = 2
+    while i < N:
+        j = 2
+
+        while j*i < N:
+            primes[j*i] = False
+            j += 1
+
+        i += 1
+
+        while i < N and not primes[i]:
+            i += 1
+
+    prime_list = [i for i in range(N) if primes[i]]
+
+    if verbose == 1:
+        print(prime_list)
+
+    elif verbose == 2:
+        print(prime_list)
+        print(primes)
+
+    return primes, prime_list
+
+
 def divisors(n, sort=False):
     div = [1]
     sqr = int(sqrt(n))
