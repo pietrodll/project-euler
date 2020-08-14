@@ -40,3 +40,24 @@ def divisor_sum(n):
                 S += n // i
 
     return S
+
+
+def mult_ord(a, n):
+    """Returns the multiplicative order of a modulo n. Raises ValueError if a is not relatively
+    prime to n
+    """
+
+    if n == 1:
+        raise ValueError('The modulo cannot be equal to 1')
+
+    m_ord = 1
+    value = a % n
+
+    while value != 1 and m_ord < n:
+        value = (value * a) % n
+        m_ord += 1
+
+    if m_ord < n:
+        return m_ord
+
+    raise ValueError(f'The given integer arguments are not relative primes: {a} and {n}')
